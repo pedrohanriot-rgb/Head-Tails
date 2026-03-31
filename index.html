@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cara ou Coroa - Pedro Henrique</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #003366; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: white; }
+        .game-card { background: white; padding: 40px; border-radius: 20px; text-align: center; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.3); width: 280px; }
+        .moeda { width: 120px; height: 120px; background-color: #ffd700; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px auto; font-size: 40px; font-weight: bold; border: 5px solid #daa520; transition: transform 0.6s; }
+        button { background-color: #003366; color: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
+        button:hover { background-color: #0055aa; transform: scale(1.05); }
+        #resultado-texto { margin-top: 20px; font-size: 24px; font-weight: bold; color: #003366; }
+    </style>
+</head>
+<body>
+    <div class="game-card">
+        <div id="moeda-img" class="moeda">?</div>
+        <button onclick="jogar()">Girar Moeda</button>
+        <div id="resultado-texto">Tente a sorte!</div>
+    </div>
 
+    <script>
+        function jogar() {
+            const moeda = document.getElementById('moeda-img');
+            const texto = document.getElementById('resultado-texto');
+            
+            // Efeito de giro simples
+            moeda.style.transform = "rotateY(720deg)";
+            texto.innerText = "Girando...";
+
+            setTimeout(() => {
+                const sorteio = Math.random();
+                moeda.style.transform = "rotateY(0deg)";
+                
+                if (sorteio < 0.5) {
+                    moeda.innerText = "C";
+                    moeda.style.backgroundColor = "#ffd700"; // Cara (Dourado)
+                    texto.innerText = "CARA!";
+                } else {
+                    moeda.innerText = "K";
+                    moeda.style.backgroundColor = "#c0c0c0"; // Coroa (Prata)
+                    texto.innerText = "COROA!";
+                }
+            }, 600);
+        }
+    </script>
+</body>
+</html>
