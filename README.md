@@ -1,1 +1,1 @@
-# Head & Tails
+# Head & Tails Project
